@@ -1,37 +1,16 @@
 Rails.application.routes.draw do
-  get 'session/new'
 
-  get 'session/create'
+  root to: 'users#new'
 
-  get 'session/destroy'
+  get '/login' => 'session#new'
 
-  get 'contacts/new'
+  post '/login' => 'session#create'
 
-  get 'contacts/create'
+  delete '/login' => 'session#destroy'
 
-  get 'contacts/index'
-
-  get 'contacts/show'
-
-  get 'contacts/edit'
-
-  get 'contacts/update'
-
-  get 'contacts/destroy'
-
-  get 'users/new'
-
-  get 'users/create'
-
-  get 'users/index'
-
-  get 'users/show'
-
-  get 'users/edit'
-
-  get 'users/update'
-
-  get 'users/destroy'
+  resources :users
+  resources :contacts
+  
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
