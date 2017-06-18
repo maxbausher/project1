@@ -1,2 +1,18 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+
+
+<h2 class="title">Create Account</h2>
+
+<% if @user.errors.any? %>
+<div class="error_container">
+    <ol>
+        <% @user.errors.full_messages.each do |msg| %>
+            <li class="error_msg"><%= msg %></li>
+        <% end %>
+    </ol>
+</div>
+<% end %>
+
+
+<div class="form_container">
+<%= render partial: 'form' %>
+</div>
