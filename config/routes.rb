@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  get 'settings/show'
+
+  get 'settings/edit'
+
+  get 'settings/update'
+
+  get 'settings/destroy'
+
   root to: 'welcome#index'
 
   get '/login' => 'session#new'

@@ -17,6 +17,7 @@
 class User < ApplicationRecord
     has_many :contacts
     has_many :interests
+    has_many :settings
     has_secure_password
     validates :email, presence:true, uniqueness: true, length: {minimum: 5}
 end
