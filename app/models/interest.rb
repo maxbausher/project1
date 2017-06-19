@@ -11,6 +11,6 @@
 #
 
 class Interest < ApplicationRecord
-    belongs_to :user
-    belongs_to :contact
+    belongs_to :user, optional: true
+    belongs_to :contact, optional: true
 end

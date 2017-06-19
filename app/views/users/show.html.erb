@@ -1,2 +1,28 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h2>Welcome <%= @user.first_name %></h2>
+
+<!-- does same as the link_to_if below, but maybe bit clearer and great for if else statements, or unless if statements. if only showing link on one conditional, use single line as below this commented out portion. -->
+
+<% if @current_user == @user %>
+
+<div class='profile_paths_container'>
+    <div id='profile_item1'>
+        <%=link_to 'Existing Contacts', contacts_path  %>
+    </div>
+</div>
+<div class='profile_paths_container'>
+    <div id='profile_item2'>
+        <%=link_to 'New Search', 'contacts#index'  %>
+    </div>
+</div>
+<div class='profile_paths_container'>
+    <div id='profile_item3'>
+        <%=link_to 'Existing Orders', 'contacts#index'  %>
+    </div>
+</div>
+<div class='profile_paths_container'>
+    <div id='profile_item4'>
+        <%=link_to 'Settings', edit_user_path(@user) %>
+    </div>
+</div>
+
+<% end %>

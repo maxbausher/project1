@@ -1,2 +1,43 @@
-<h1>Contacts#show</h1>
-<p>Find me in app/views/contacts/show.html.erb</p>
+
+
+
+<% if @current_user == @user %>
+
+<div class='profile_paths_container'>
+    <div id='profile_item1'>
+
+        <ul>
+          <% @current_user.contacts.each do |c| %>
+          <p>Contact Details</p>
+            <li><%=c.first_name %> <%=c.surname %></li>
+            <li><%=c.email %></li>
+            <li><%=c.gender %></li>
+            <li><%=c.location %></li>
+            <li><%=c.relationship_status %></li>
+            <li><%=c.birthday %></li>
+          <% end %>
+        </ul>
+    </div>
+</div>
+<div class='profile_paths_container'>
+    <div id='profile_item2'>
+        <ul>
+          <% @current_user.contacts.each do |c| %>
+          <p>Contact Interests</p>
+            <li> <%= c.interests %></li>
+          <% end %>
+        </ul>
+    </div>
+</div>
+<div class='profile_paths_container'>
+    <div id='profile_item3'>
+        <%=link_to 'Existing Orders', 'contacts#index'  %>
+    </div>
+</div>
+<div class='profile_paths_container'>
+    <div id='profile_item4'>
+        <%=link_to 'Settings', edit_user_path(@user) %>
+    </div>
+</div>
+
+<% end %>

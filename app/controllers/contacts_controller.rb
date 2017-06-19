@@ -1,4 +1,8 @@
 class ContactsController < ApplicationController
+
+before_action :check_if_logged_in, only: [:index]
+
+
   def new
   end
 

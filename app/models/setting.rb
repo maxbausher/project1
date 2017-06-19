@@ -3,7 +3,6 @@
 # Table name: settings
 #
 #  id                    :integer          not null, primary key
-#  relationship_status   :string
 #  credit_card_full_name :string
 #  credit_card_number    :integer
 #  expiration_date       :integer
@@ -15,5 +14,5 @@
 #
 
 class Setting < ApplicationRecord
-    belongs_to :user
+    belongs_to :user, optional: true
 end

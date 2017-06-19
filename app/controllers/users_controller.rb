@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :get_user, only: [ :show, :edit, :update ]
   before_action :check_if_admin, only: [ :index ]
 
-  before_action :check_if_logged_in, only: [:contact_create]
+  before_action :check_if_logged_in, only: [:contact_create, :setting_create, :edit, :update]
 
   def get_user
       @user = User.find params["id"]
@@ -15,7 +15,7 @@ class UsersController < ApplicationController
   def create
       @user = User.create user_params
       if @user.id.present?
-          session[:user_id] = @user.idea
+          session[:user_id] = @user.id
           redirect_to user_path(@user.id)
       else
           render :new
@@ -29,6 +29,7 @@ class UsersController < ApplicationController
   end
 
   def edit
+
   end
 
   def update
