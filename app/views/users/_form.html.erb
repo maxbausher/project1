@@ -1,6 +1,6 @@
 
 
-<%= form_for @current_user do |f| %>
+<%= form_for(@user, html: {multipart: true}) do |f| %>
     <div class='form_item'>
     <%= f.label :first_name %>
     <%= f.text_field :first_name %>
@@ -24,6 +24,11 @@
     <div class='form_item'>
     <%= f.label :password_confirmation %>
     <%= f.password_field :password_confirmation %>
+    </div>
+
+    <div class='form_item'>
+    <%= f.label :image %>
+    <%= f.cl_image_upload :image %>
     </div>
 
     <div class='form_item'>

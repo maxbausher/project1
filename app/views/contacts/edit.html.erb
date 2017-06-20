@@ -1,2 +1,7 @@
-<h1>Contacts#edit</h1>
-<p>Find me in app/views/contacts/edit.html.erb</p>
+
+
+<h3>Edit Contact Details</h3>
+<%= render partial: 'form' %>
+
+<h3>Update <%= @contact.first_name %>'s Interests</h3>
+<%= render partial: 'interests' %>

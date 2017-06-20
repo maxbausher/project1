@@ -1,0 +1,10 @@
+
+
+<% @contact.interests.each do |item| %>
+    <%= form_for item do |f| %>
+        <%= f.label :item %>
+        <%= f.text_field :item %>
+        <%= f.submit "Submit" %>
+    <% end %>
+
+<% end %>

@@ -16,6 +16,8 @@ Rails.application.routes.draw do
 
   delete '/login' => 'session#destroy'
 
+  patch '/interest/:id' => 'contacts#contact_interest_update', as: 'interest'
+
   resources :users
   resources :contacts
 

@@ -1,7 +1,7 @@
 
 
 
-<% if @current_user == @user %>
+<% if @current_user == @contact.user %>
 
 <div class='profile_paths_container'>
     <div id='profile_item1'>
@@ -21,10 +21,11 @@
 </div>
 <div class='profile_paths_container'>
     <div id='profile_item2'>
+        <p>Contact Interests</p>
         <ul>
-          <% @current_user.contacts.each do |c| %>
-          <p>Contact Interests</p>
-            <li> <%= c.interests %></li>
+          <% @contact.interests.each do  |c| %>
+
+            <li> <%= c.item %></li>
           <% end %>
         </ul>
     </div>
@@ -36,7 +37,12 @@
 </div>
 <div class='profile_paths_container'>
     <div id='profile_item4'>
-        <%=link_to 'Settings', edit_user_path(@user) %>
+        <%=link_to 'Edit Contact Details', edit_contact_path(@contact) %>
+    </div>
+</div>
+<div class='profile_paths_container'>
+    <div id='profile_item5'>
+        <%=link_to 'New Search', contact_path(@contact) %>
     </div>
 </div>
 

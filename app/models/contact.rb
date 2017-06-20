@@ -18,4 +18,5 @@
 class Contact < ApplicationRecord
     belongs_to :user, optional: true
     has_many :interests
+    has_many :gifts
 end

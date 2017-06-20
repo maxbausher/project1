@@ -4,11 +4,23 @@
     <title>ButlersPantry</title>
     <%= csrf_meta_tags %>
 
+    <%= cloudinary_js_config %>
+
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
   </head>
 
   <body>
+      <nav>
+      <% if @current_user.present? %>
+          <p>
+          <%= link_to 'Logout', login_path, method: :delete %>
+          </p>
+      <% end %>
+      </nav>
+
+
     <%= yield %>
+
   </body>
 </html>

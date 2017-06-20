@@ -1,31 +1,31 @@
-<%= form_for @current_user.settings do |f| %>
+<%= form_for @current_user.settings do |s| %>
     <div class='form_item'>
-    <%= f.label :Full_Name_On_Card %>
-    <%= f.text_field :credit_card_full_name %>
+    <%= s.label :credit_card_full_name %>
+    <%= s.text_field :credit_card_full_name %>
     </div>
 
     <div class='form_item'>
-    <%= f.label :Credit_Card_Number %>
-    <%= f.number_field :credit_card_number %>
+    <%= s.label :credit_card_number %>
+    <%= s.number_field :credit_card_number %>
     </div>
 
     <div class='form_item'>
-    <%= f.label :Expiration_Date %>
-    <%= f.text_field :expiration_date %>
+    <%= s.label :expiration_date %>
+    <%= s.text_field :expiration_date %>
     </div>
 
     <div class='form_item'>
-    <%= f.label :CSV %>
-    <%= f.number_field :csv %>
+    <%= s.label :csv %>
+    <%= s.number_field :csv %>
     </div>
 
     <div class='form_item'>
-    <%= f.label :Credit_Card_Type %>
-    <%= f.text_field :credit_card_type %>
+    <%= s.label :credit_card_type %>
+    <%= s.text_field :credit_card_type %>
     </div>
 
     <div class='form_item'>
-      <%= f.submit %>
+      <%= s.submit %>
     </div>
 
 <% end %>
