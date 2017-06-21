@@ -46,4 +46,18 @@
     </div>
 </div>
 
+<% if @result.length < 1 %>
+<div class='gift_suggestions_container'>
+    <h3>Results matching your search criteria of: '<%= params["keyword"] %>'
+    </h3>
+
+    <br>
+    <% @results.each do |result| %>
+        <a href="/movie_details/<%= result["id"] %>">
+            <img src="http://image.tmdb.org/t/p/w300<%= result["poster_path"] %>">
+        </a>
+        <% binding.pry %>
+    <% end %>
+</div>
+
 <% end %>

@@ -50,8 +50,32 @@ class UsersController < ApplicationController
   def destroy
   end
 
+  def user_setting_update
+      @setting = Setting.find(params["id"])
+      @setting.credit.update setting_params
+      redirect_to user_path(@setting.user)
+  end
+
+  def user_interest_update
+    interests = params["interests"]
+
+    interests.each do |key, name|
+      interest = Interest.find( key )
+      if interest.item != name["item"]
+        interest.item = name["item"]
+        interest.save
+      end
+    end
+    redirect_to :back
+end
+
   private
   def user_params
       params.require(:user).permit(:first_name, :surname, :email, :password, :password_confirmation, :gender, :birthday)
   end
+
+  def setting_params
+      params.require(:setting).permit(:credit_card_full_name, :credit_card_number, :expiration_date, :csv, :credit_card_type)
+  end
+
 end

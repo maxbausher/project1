@@ -1,12 +1,15 @@
-<%= form_for @current_user.interests do |f| %>
 
-    <div class='form_item'>
-    <%= f.label :interests %>
-    <%= f.text_field :item %>
-    </div>
 
-    <div class='form_item'>
-      <%= f.submit %>
-    </div>
-
+<%= form_tag(interest_path, method: "patch") do %>
+  <% @user.interests.each do |interest| %>
+    <%= fields_for "interests[]", interest do | item | %>
+      <p>
+        <%= :Interest %>
+      </p>
+      <p>
+        <%= item.text_field :item %>
+      </p>
+    <% end %>
+  <% end %>
+  <%= submit_tag "Submit"%>
 <% end %>

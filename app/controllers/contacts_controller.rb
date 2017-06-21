@@ -18,10 +18,22 @@ before_action :get_contact, only: [ :show, :edit, :update]
   end
 
   def show
-    #   url = "https://api.themoviedb.org/3/search/movie?api_key=24d863d54c86392e6e1df55b9a328755&query=" + params["keyword"]
-    #   gift_data = HTTParty.get url
-    #   # binding.pry
-    #   @results = gift_data["results"]
+      url = "http://svcs.ebay.com/services/search/FindingService/v1";
+      url += "?OPERATION-NAME=findItemsByKeywords";
+      url += "&SERVICE-VERSION=1.0.0";
+      url += "&SECURITY-APPNAME=MaxBaush-ButlersP-PRD-0b7eb28a6-348869c5";
+      url += "&GLOBAL-ID=EBAY-US";
+      url += "&RESPONSE-DATA-FORMAT=JSON";
+      url += "&callback=_cb_findItemsByKeywords";
+      url += "&REST-PAYLOAD";
+      url += "&keywords=Fleetwood%20Mac";
+      url += "&paginationInput.entriesPerPage=3";
+      gift_data = HTTParty.get url
+      # binding.pry
+      @results = gift_data["results"]
+
+      
+
   end
 
   def edit
@@ -34,11 +46,16 @@ before_action :get_contact, only: [ :show, :edit, :update]
   end
 
   def contact_interest_update
-      @interest = Interest.find( params["id"] )
-    #   raise
-      @interest.item = params["interest"]["item"]
-      @interest.save
-      redirect_to contacts_path(@interest.contact)
-  end
+    interests = params["interests"]
+
+    interests.each do |key, name|
+      interest = Interest.find( key )
+      if interest.item != name["item"]
+        interest.item = name["item"]
+        interest.save
+      end
+    end
+    redirect_to :back
+end
 
 end

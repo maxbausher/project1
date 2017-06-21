@@ -16,10 +16,14 @@ Rails.application.routes.draw do
 
   delete '/login' => 'session#destroy'
 
-  patch '/interest/:id' => 'contacts#contact_interest_update', as: 'interest'
+  patch '/interest' => 'contacts#contact_interest_update', as: 'interest'
 
-  resources :users
-  resources :contacts
+  patch '/setting/:id' => 'settings#user_setting_update', as: 'setting'
+
+   patch '/interest' => 'users#user_interest_update', as: 'user_interest'
+
+  resources :users, :contacts
+
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
