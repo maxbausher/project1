@@ -7,15 +7,13 @@
     <div id='profile_item1'>
 
         <ul>
-          <% @current_user.contacts.each do |c| %>
           <p>Contact Details</p>
-            <li><%=c.first_name %> <%=c.surname %></li>
-            <li><%=c.email %></li>
-            <li><%=c.gender %></li>
-            <li><%=c.location %></li>
-            <li><%=c.relationship_status %></li>
-            <li><%=c.birthday %></li>
-          <% end %>
+            <li><%=@contact.first_name %> <%=@contact.surname %></li>
+            <li><%=@contact.email %></li>
+            <li><%=@contact.gender %></li>
+            <li><%=@contact.location %></li>
+            <li><%=@contact.relationship_status %></li>
+            <li><%=@contact.birthday %></li>
         </ul>
     </div>
 </div>
@@ -35,7 +33,7 @@
         <%=link_to 'Existing Orders', 'contacts#index'  %>
     </div>
 </div>
-<div class='profile_paths_container'>
+<div class='profile_paths_container' >
     <div id='profile_item4'>
         <%=link_to 'Edit Contact Details', edit_contact_path(@contact) %>
     </div>
@@ -46,18 +44,21 @@
     </div>
 </div>
 
-<% if @result.length < 1 %>
+<% if @results.length > 0 %>
 <div class='gift_suggestions_container'>
-    <h3>Results matching your search criteria of: '<%= params["keyword"] %>'
-    </h3>
-
-    <br>
-    <% @results.each do |result| %>
-        <a href="/movie_details/<%= result["id"] %>">
-            <img src="http://image.tmdb.org/t/p/w300<%= result["poster_path"] %>">
-        </a>
-        <% binding.pry %>
+    <h3>Product suggestions: </h3>
+    <% @results.each do |r| %>
+        <% r.each do |result| %>
+            <div>
+                <img src='<%= result["galleryURL"].first %>'>
+                <%= result["title"].first %>
+                <br>
+            </div>
+        <% end %>
     <% end %>
+
+
 </div>
+<% end %>
 
 <% end %>

@@ -1,2 +1,57 @@
-<h1>Contacts#new</h1>
-<p>Find me in app/views/contacts/new.html.erb</p>
+<h3>New Contact Details</h3>
+<%= form_for @contact do |c| %>
+    <div class='form_item'>
+    <%= c.label :first_name %>
+    <%= c.text_field :first_name %>
+    </div>
+
+    <div class='form_item'>
+    <%= c.label :surname %>
+    <%= c.text_field :surname %>
+    </div>
+
+    <div class='form_item'>
+    <%= c.label :email %>
+    <%= c.email_field :email %>
+    </div>
+
+    <div class='form_item'>
+    <%= c.label :location %>
+    <%= c.text_field :location %>
+    </div>
+
+    <div class='form_item'>
+    <%= c.label :birthday %>
+    <%= c.date_field :birthday %>
+    </div>
+
+    <div class='form_item'>
+    <%= c.label :gender %>
+    <%= c.text_field :gender %>
+    </div>
+
+
+    <%= hidden_field_tag :user_id, @current_user.id %>
+
+
+
+<h3>Enter Contact Interests</h3>
+
+    <div class='form_item'>
+        <%= text_field_tag :item1 %>
+    </div>
+
+    <div class='form_item'>
+        <%= text_field_tag :item2 %>
+    </div>
+
+
+    <div class='form_item'>
+        <%= text_field_tag :item3 %>
+    </div>
+
+    <div class='form_item'>
+        <%= c.submit %>
+    </div>
+
+<% end %>

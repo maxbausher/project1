@@ -15,12 +15,6 @@ class UsersController < ApplicationController
   def create
 
       @user = User.new(user_params)
-
-      if params[:file].present?
-        req = Cloudinary::Uploader.upload params[:file]
-      end
-
-      @user.image = req['public_id']
       @user.save
 
       if @user.id.present?
@@ -42,6 +36,7 @@ class UsersController < ApplicationController
   end
 
   def update
+      
       @user = @current_user #unless @current_user.is_admin?
       @user.update user_params
       redirect_to user_path( params["id"] )

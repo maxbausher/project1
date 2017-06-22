@@ -1,8 +1,93 @@
-<h2>Edit Account</h2>
+<h2 class="title">Update Account</h2>
 
-<h3>Account Settings</h3>
-<%= render partial: 'form' %>
-<h3>Billing &amp; Details</h3>
-<%= render partial: 'billing' %>
+<% if @user.errors.any? %>
+    <div class="error_container">
+        <ol>
+            <% @user.errors.full_messages.each do |msg| %>
+                <li class="error_msg"><%= msg %></li>
+            <% end %>
+        </ol>
+    </div>
+<% end %>
+
+<div class="form-group" class="form_container">
+    <%= form_for(@user, html: {multipart: true}) do |f| %>
+    <h3>Account Details</h3>
+        <div class='form_item'>
+        <%= f.label :first_name %>
+        <%= f.text_field :first_name %>
+        </div>
+
+        <div class='form_item'>
+        <%= f.label :surname %>
+        <%= f.text_field :surname %>
+        </div>
+
+        <div class='form_item'>
+        <%= f.label :email %>
+        <%= f.email_field :email %>
+        </div>
+
+        <div class='form_item'>
+        <%= f.label :password %>
+        <%= f.password_field :password %>
+        </div>
+
+        <div class='form_item'>
+        <%= f.label :password_confirmation %>
+        <%= f.password_field :password_confirmation %>
+        </div>
+
+        <div class='form_item'>
+        <%= f.label :birthday %>
+        <%= f.date_field :birthday %>
+        </div>
+
+        <div class='form_item'>
+        <%= f.label :gender %>
+        <%= f.text_field :gender %>
+        </div>
+
+
+<h3>Billing Details</h3>
+       <div class='form_item'>
+       <%= label_tag :credit_card_full_name %>
+       <%= text_field_tag :credit_card_full_name %>
+       </div>
+
+       <div class='form_item'>
+       <%= label_tag :credit_card_number %>
+       <%= number_field_tag :credit_card_number %>
+       </div>
+
+       <div class='form_item'>
+       <%= label_tag :expiration_date %>
+       <%= text_field_tag :expiration_date %>
+       </div>
+
+       <div class='form_item'>
+       <%= label_tag :csv %>
+       <%= number_field_tag :csv %>
+       </div>
+
+       <div class='form_item'>
+       <%= label_tag :credit_card_type %>
+       <%= text_field_tag :credit_card_type %>
+       </div>
+
 <h3>Interests</h3>
-<%= render partial: 'interests' %>
+
+  <% @user.interests.each do |interest| %>
+    <%= fields_for "interests[]", interest do | item | %>
+      <p>
+        <%= item.text_field :item %>
+      </p>
+    <% end %>
+  <% end %>
+
+  <div class='form_item'>
+      <%= f.submit %>
+  </div>
+
+<% end %>
+</div>
