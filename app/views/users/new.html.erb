@@ -13,44 +13,44 @@
 <% end %>
 
 
-<div class="form-group" class="form_container">
+<div class="form_container">
     <%= form_for(@user, html: {multipart: true}) do |f| %>
-        <div class='form_item'>
+        <div class='form_item' class="form-group">
         <%= f.label :first_name %>
         <%= f.text_field :first_name %>
         </div>
 
-        <div class='form_item'>
+        <div class='form_item' class="form-group">
         <%= f.label :surname %>
         <%= f.text_field :surname %>
         </div>
 
-        <div class='form_item'>
+        <div class='form_item' class="form-group">
         <%= f.label :email %>
         <%= f.email_field :email %>
         </div>
 
-        <div class='form_item'>
+        <div class='form_item' class="form-group">
         <%= f.label :password %>
         <%= f.password_field :password %>
         </div>
 
-        <div class='form_item'>
+        <div class='form_item' class="form-group">
         <%= f.label :password_confirmation %>
         <%= f.password_field :password_confirmation %>
         </div>
 
-        <div class='form_item'>
+        <div class='form_item' class="form-group">
         <%= f.label :birthday %>
         <%= f.date_field :birthday %>
         </div>
 
-        <div class='form_item'>
+        <div class='form_item' class="form-group">
         <%= f.label :gender %>
         <%= f.text_field :gender %>
         </div>
 
-        <div class='form_item'>
+        <div class='form_item' class="form-group">
           <%= f.submit %>
         </div>
 
