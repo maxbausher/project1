@@ -3,29 +3,24 @@
 
 <% if @current_user == @contact.user %>
 
+
 <div class='profile_paths_container'>
     <div id='profile_item1'>
-
-        <ul>
-          <p>Contact Details</p>
-            <li><%=@contact.first_name %> <%=@contact.surname %></li>
-            <li><%=@contact.email %></li>
-            <li><%=@contact.gender %></li>
-            <li><%=@contact.location %></li>
-            <li><%=@contact.relationship_status %></li>
-            <li><%=@contact.birthday %></li>
-        </ul>
+        <h4>Contact Details</h4>
+        <p><%=@contact.first_name %> <%=@contact.surname %></p>
+        <p><%=@contact.email %></p>
+        <p><%=@contact.gender %></p>
+        <p><%=@contact.location %></p>
+        <p><%=@contact.relationship_status %></p>
+        <p><%=@contact.birthday %></p>
     </div>
 </div>
 <div class='profile_paths_container'>
     <div id='profile_item2'>
-        <p>Contact Interests</p>
-        <ul>
+        <h4>Contact Interests</h4>
           <% @contact.interests.each do  |c| %>
-
-            <li> <%= c.item %></li>
+            <p> <%= c.item %></p>
           <% end %>
-        </ul>
     </div>
 </div>
 <div class='profile_paths_container'>
@@ -49,10 +44,10 @@
     <h3>Product suggestions: </h3>
     <% @results.each do |r| %>
         <% r.each do |result| %>
-            <div>
-                <img src='<%= result["galleryURL"].first %>'>
-                <%= result["title"].first %>
-                <br>
+            <div class='gift_suggestion'>
+                <img class="img-circle" src='<%= result["galleryURL"].first %>'>
+                <p><%= result["title"].first %></p>
+                <a href='<%= result["viewItemURL"].first %>'>See Details</a>
             </div>
         <% end %>
     <% end %>

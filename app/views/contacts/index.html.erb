@@ -2,11 +2,8 @@
 
 <h2>Contacts</h2>
 
-<ul>
-  <% @current_user.contacts.each do |c| %>
-    <li>
-      <%= link_to c.first_name, contact_path(c.id) %>
-    </li>
+ <% @current_user.contacts.each do |c| %>
+     <p><%= link_to c.first_name, contact_path(c.id) %></p>
   <% end %>
 </ul>
 
